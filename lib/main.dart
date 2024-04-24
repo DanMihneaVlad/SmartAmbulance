@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_ambulance/other/firebase_options.dart';
 import 'package:smart_ambulance/screens/screen_selector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,8 @@ class SmartAmbulance extends StatelessWidget {
       value: FirebaseAuth.instance.authStateChanges(), 
       initialData: null,
       child: const MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         title: 'SmartAmbulance',
         home: ScreenSelector()
       )

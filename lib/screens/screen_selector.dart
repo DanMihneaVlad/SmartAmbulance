@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_ambulance/screens/authenticate/auth_page.dart';
 
 class ScreenSelector extends StatefulWidget {
   const ScreenSelector({super.key});
@@ -16,7 +17,7 @@ class _ScreenSelectorState extends State<ScreenSelector> {
     final user = Provider.of<User?>(context);
 
     if (user == null) {
-      return Container(color: Colors.blue);
+      return const AuthPage();
     } else {
       return Scaffold(
         appBar: AppBar(),
