@@ -1,3 +1,4 @@
 class CollectionPaths {
-  static String users = 'users';
+  static String usersForApproval = 'usersForApproval';
+  static String users = 'approvedUsers';
 }

@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_ambulance/providers/user_provider.dart';
 import 'package:smart_ambulance/screens/authenticate/auth_page.dart';
+import 'package:smart_ambulance/screens/home/home.dart';
+import 'package:smart_ambulance/widgets/custom_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScreenSelector extends StatefulWidget {
   const ScreenSelector({super.key});
@@ -19,13 +23,11 @@ class _ScreenSelectorState extends State<ScreenSelector> {
     if (user == null) {
       return const AuthPage();
     } else {
-      return Scaffold(
-        appBar: AppBar(),
-        body: SafeArea(
-          child: Center(
-            child: Container(color: Colors.green),
-          ),
-        ),
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => UserProvider()),
+        ],
+        child: const HomePage(),
       );
     }
   }

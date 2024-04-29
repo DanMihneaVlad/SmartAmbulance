@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smart_ambulance/constants/sizes.dart';
-import 'package:smart_ambulance/constants/text_styles.dart';
 
 class SmartAmbulanceButton extends StatelessWidget {
   const SmartAmbulanceButton({super.key, required this.text, this.onPressed, this.height, required this.fontSize});

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_ambulance/models/user/user_model.dart';
+import 'package:smart_ambulance/services/user_service.dart';
 
 class AuthService {
 
@@ -28,8 +29,9 @@ class AuthService {
       String uid = currentUserId ?? '';
 
       if (registeredUser != null) {
-        UserModel(uid: uid, email: email, firstName: firstName, lastName: lastName, role: role);
+        UserModel user = UserModel(uid: uid, email: email, firstName: firstName, lastName: lastName, role: role);
         
+        await UserService().addUser(user);
       }
 
     } on FirebaseAuthException catch (e) {

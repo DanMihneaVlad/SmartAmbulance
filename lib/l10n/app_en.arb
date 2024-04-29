@@ -32,5 +32,11 @@
     "register_hint_role": "Role",
     "register_button": "Register",
     "register_already": "Already have an account?",
-    "register_login": " Login now"
+    "register_login": " Login now",
+    "appbar_sign_out": "Sign out",
+    "loading_error": "Could not load the user data!",
+    "user_not_approved": "The user hasn't been approved",
+    "home_error_loading_data": "Sign in failed",
+    "home_page": "Welcome",
+    "admin_home": "Administration"
 }
