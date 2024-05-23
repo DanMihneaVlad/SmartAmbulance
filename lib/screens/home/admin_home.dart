@@ -63,7 +63,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                       );
                   },
                 ),),
-                SmartAmbulanceButton(text: AppLocalizations.of(context)!.add_hospital, fontSize: SmartAmbulanceSizes.bigButtonFontSize, onPressed: (() async {
+                SmartAmbulanceButton(text: "Add Hospital", fontSize: SmartAmbulanceSizes.bigButtonFontSize, onPressed: (() async {
                    Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AddHospital()),
