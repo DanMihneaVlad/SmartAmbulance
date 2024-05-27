@@ -14,7 +14,7 @@ class UserService {
   Future addUser(UserModel user) async {
     try {
 
-      await _firestoreInstance.collection(CollectionPaths.users).doc(userId).set(user.toJson());
+      await _firestoreInstance.collection(CollectionPaths.usersForApproval).doc(userId).set(user.toJson());
 
     } on Exception catch (e) {
       return e;
@@ -61,7 +61,6 @@ class UserService {
   Future<void> approveUser(UserModel userForApproval) async {
     
       final response = await _firestoreInstance.collection(CollectionPaths.usersForApproval).doc(userForApproval.uid).get();
-
 
       final Map<String, dynamic> user = response.data() as Map<String, dynamic>;
 
