@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_ambulance/providers/chat_provider.dart';
 import 'package:smart_ambulance/providers/destination_provider.dart';
 import 'package:smart_ambulance/providers/hospital_provider.dart';
 import 'package:smart_ambulance/providers/user_provider.dart';
@@ -29,7 +30,8 @@ class _ScreenSelectorState extends State<ScreenSelector> {
         providers: [
           ChangeNotifierProvider(create: (context) => UserProvider()),
           ChangeNotifierProvider(create: (context) => HospitalProvider()),
-          ChangeNotifierProvider(create: (context) => DestinationProvider())
+          ChangeNotifierProvider(create: (context) => DestinationProvider()),
+          ChangeNotifierProvider(create: (context) => ChatProvider())
         ],
         child: const HomePage(),
       );

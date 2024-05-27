@@ -48,9 +48,9 @@ class UserService {
       final data = querySnapshot.docs.map((doc) => doc.data()).toList();
 
       for (Map<String, dynamic>? elem in data) {
-      UserModel user = UserModel.fromJson(elem as Map<String, dynamic>);
-      userList.add(user);
-    }
+        UserModel user = UserModel.fromJson(elem as Map<String, dynamic>);
+        userList.add(user);
+      }
     } catch (e) {
       print('Error fetching users: $e');
     }

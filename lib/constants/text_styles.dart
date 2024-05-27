@@ -19,4 +19,8 @@ class SmartAmbulanceTextStyles {
   static const TextStyle pressableTextStyle = TextStyle(
     color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18
   );
+
+  static const TextStyle userTileTextStyle = TextStyle(
+    fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black
+  );
 }

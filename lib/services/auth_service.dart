@@ -7,6 +7,7 @@ class AuthService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   static String? get currentUserId => _auth.currentUser?.uid;
+  static String? get currentUserEmail => _auth.currentUser?.email;
 
   Future signIn(String email, String password) async {
     try {

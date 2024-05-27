@@ -47,5 +47,7 @@
     "paramedic_map_set_destination": "Set destination",
     "paramedic_map_error_no_hospital": "No destination set",
     "paramedic_map_error_not_travelling": "Not currently travelling",
-    "paramedic_map_error_destination_not_set": "Already travelling"
+    "paramedic_map_error_destination_not_set": "Already travelling",
+    "chat_loading_error": "Could not load chats",
+    "chat_send_message": "Send"
 }
