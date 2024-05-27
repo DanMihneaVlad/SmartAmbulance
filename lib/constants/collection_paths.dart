@@ -3,4 +3,5 @@ class CollectionPaths {
   static String users = 'approvedUsers';
   static String hospitals = 'hospitals';
   static String destinations = 'destinations';
+  static String approvedUsers = 'approvedUsers';
 }

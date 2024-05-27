@@ -1,3 +1,5 @@
+//import 'dart:js_interop_unsafe';
+
 import 'package:smart_ambulance/constants/collection_paths.dart';
 import 'package:smart_ambulance/models/user/user_model.dart';
 import 'package:smart_ambulance/services/auth_service.dart';
@@ -22,7 +24,7 @@ class UserService {
   Future getUserDetails() async {
     try {
 
-      final response = await _firestoreInstance.collection(CollectionPaths.users).doc(userId).get();
+      final response = await _firestoreInstance.collection(CollectionPaths.approvedUsers).doc(userId).get();
 
       if (!response.exists) {
         return null;
@@ -36,4 +38,38 @@ class UserService {
       return e;
     }
   }
+
+  Future<List<UserModel>> getUsersForApproval() async {
+    List<UserModel> userList = [];
+
+    try {
+      final querySnapshot = await _firestoreInstance.collection('usersForApproval').get();
+      
+      final data = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+      for (Map<String, dynamic>? elem in data) {
+      UserModel user = UserModel.fromJson(elem as Map<String, dynamic>);
+      userList.add(user);
+    }
+    } catch (e) {
+      print('Error fetching users: $e');
+    }
+
+    return userList;
+  }
+
+  Future<void> approveUser(UserModel userForApproval) async {
+    
+      final response = await _firestoreInstance.collection(CollectionPaths.usersForApproval).doc(userForApproval.uid).get();
+
+
+      final Map<String, dynamic> user = response.data() as Map<String, dynamic>;
+
+      // Add the user data to the 'approvedUsers' collection
+      await _firestoreInstance.collection(CollectionPaths.approvedUsers).doc(userForApproval.uid).set(user);
+
+      _firestoreInstance.collection(CollectionPaths.usersForApproval).doc(userForApproval.uid).delete();
+
+  }
+
 }
