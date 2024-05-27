@@ -9,4 +9,5 @@ class SmartAmbulanceSizes {
   static const double iconSize = 32;
   static const double cardPadding = 10;
   static const double cardVerticalPadding = 5;
+  static const double fabSize = 32;
 }

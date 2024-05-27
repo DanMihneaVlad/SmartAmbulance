@@ -38,5 +38,14 @@
     "user_not_approved": "The user hasn't been approved",
     "home_error_loading_data": "Sign in failed",
     "home_page": "Welcome",
-    "admin_home": "Administration"
+    "admin_home": "Administration",
+    "paramedic_home": "Paramedic Home",
+    "paramedic_home_map_button": "See map",
+    "paramedic_map": "Map",
+    "paramedic_map_hospital_destination": "Select the destination hospital",
+    "paramedic_map_hint_hospital": "Hospital",
+    "paramedic_map_set_destination": "Set destination",
+    "paramedic_map_error_no_hospital": "No destination set",
+    "paramedic_map_error_not_travelling": "Not currently travelling",
+    "paramedic_map_error_destination_not_set": "Already travelling"
 }
