@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Expanded(child: Image.asset('assets/img/home.png')),
                     const SizedBox(height: SmartAmbulanceSizes.bigSizedBox,),
-                    Text(textAlign: TextAlign.center, style: SmartAmbulanceTextStyles.errorTextStyle, AppLocalizations.of(context)!.loading_error),
+                    Text(textAlign: TextAlign.center, style: SmartAmbulanceTextStyles.errorTextStyle, AppLocalizations.of(context)!.user_not_approved),
                   ],
                 )
               )

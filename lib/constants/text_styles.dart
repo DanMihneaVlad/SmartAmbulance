@@ -23,4 +23,8 @@ class SmartAmbulanceTextStyles {
   static const TextStyle userTileTextStyle = TextStyle(
     fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black
   );
+
+  static const TextStyle messageTextStyle = TextStyle(
+    fontSize: 18, fontWeight: FontWeight.normal, color: Colors.black
+  );
 }

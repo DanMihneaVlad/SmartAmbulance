@@ -13,4 +13,5 @@ class SmartAmbulanceSizes {
   static const double fabSize = 32;
   static const double tileHorizontalPadding = 15;
   static const double tileVerticalPadding = 10;
+  static const double chatBubblePadding = 4;
 }

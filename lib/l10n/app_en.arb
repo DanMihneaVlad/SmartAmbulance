@@ -35,6 +35,7 @@
     "register_login": " Login now",
     "appbar_sign_out": "Sign out",
     "loading_error": "Could not load the user data!",
+    "loading_waiting": "Loading...",
     "user_not_approved": "The user hasn't been approved",
     "home_error_loading_data": "Sign in failed",
     "home_page": "Welcome",
@@ -49,5 +50,7 @@
     "paramedic_map_error_not_travelling": "Not currently travelling",
     "paramedic_map_error_destination_not_set": "Already travelling",
     "chat_loading_error": "Could not load chats",
-    "chat_send_message": "Send"
+    "chat_send_message": "Send",
+    "chat_enter_message": "Enter a message",
+    "doctor_home": "Doctor Home"
 }

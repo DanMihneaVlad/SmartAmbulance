@@ -45,7 +45,7 @@ class _CustomUserChatTileState extends State<CustomUserChatTile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${widget.user.firstName}${widget.user.lastName}',
+                      '${widget.user.firstName} ${widget.user.lastName}',
                       style: SmartAmbulanceTextStyles.userTileTextStyle,
                     ),
                     Text(

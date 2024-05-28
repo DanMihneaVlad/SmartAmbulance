@@ -3,18 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:smart_ambulance/constants/text_styles.dart';
 import 'package:smart_ambulance/providers/chat_provider.dart';
 import 'package:smart_ambulance/screens/chat/chat_screen.dart';
-import 'package:smart_ambulance/widgets/custom_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smart_ambulance/widgets/custom_user_chat_tile.dart';
 
-class ParamedicChatWidget extends StatefulWidget {
-  const ParamedicChatWidget({super.key});
+class ChatWidget extends StatefulWidget {
+  const ChatWidget({super.key});
 
   @override
-  State<ParamedicChatWidget> createState() => _ParamedicChatWidgetState();
+  State<ChatWidget> createState() => _ParamedicChatWidgetState();
 }
 
-class _ParamedicChatWidgetState extends State<ParamedicChatWidget> {
+class _ParamedicChatWidgetState extends State<ChatWidget> {
   @override
   Widget build(BuildContext context) {
     var chatProvider = context.watch<ChatProvider>();

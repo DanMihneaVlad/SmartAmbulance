@@ -7,8 +7,6 @@ import 'package:smart_ambulance/providers/hospital_provider.dart';
 import 'package:smart_ambulance/providers/user_provider.dart';
 import 'package:smart_ambulance/screens/authenticate/auth_page.dart';
 import 'package:smart_ambulance/screens/home/home.dart';
-import 'package:smart_ambulance/widgets/custom_appbar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScreenSelector extends StatefulWidget {
   const ScreenSelector({super.key});

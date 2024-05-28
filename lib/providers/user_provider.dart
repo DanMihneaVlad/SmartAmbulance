@@ -25,7 +25,7 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> approveUser(UserModel user) async{
     await userService.approveUser(user);
-      notifyListeners();
+    usersForApproval.remove(user);
+    notifyListeners();
   }
-
 }

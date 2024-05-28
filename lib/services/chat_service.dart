@@ -49,4 +49,17 @@ class ChatService {
     // save message to firestore
     await _firestoreInstance.collection(CollectionPaths.chatRooms).doc(chatRoomId).collection(CollectionPaths.messages).add(messageModel.toJson());
   }
+
+  Stream<QuerySnapshot> getMessages(String otherUserId) {
+    List<String> ids = [userId, otherUserId];
+    ids.sort(); // make sure 2 people have the same chatroomId
+    String chatRoomId = ids.join('_');
+
+    return _firestoreInstance
+      .collection(CollectionPaths.chatRooms)
+      .doc(chatRoomId)
+      .collection(CollectionPaths.messages)
+      .orderBy("timestamp", descending: false)
+      .snapshots();
+  }
 }
