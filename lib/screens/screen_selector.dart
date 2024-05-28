@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_ambulance/providers/chat_provider.dart';
 import 'package:smart_ambulance/providers/destination_provider.dart';
 import 'package:smart_ambulance/providers/hospital_provider.dart';
+import 'package:smart_ambulance/providers/paramedic_destinations_provider.dart';
 import 'package:smart_ambulance/providers/user_provider.dart';
 import 'package:smart_ambulance/screens/authenticate/auth_page.dart';
 import 'package:smart_ambulance/screens/home/home.dart';
@@ -29,7 +30,8 @@ class _ScreenSelectorState extends State<ScreenSelector> {
           ChangeNotifierProvider(create: (context) => UserProvider()),
           ChangeNotifierProvider(create: (context) => HospitalProvider()),
           ChangeNotifierProvider(create: (context) => DestinationProvider()),
-          ChangeNotifierProvider(create: (context) => ChatProvider())
+          ChangeNotifierProvider(create: (context) => ChatProvider()),
+          ChangeNotifierProvider(create: (context) => ParamedicDestinationsProvider())
         ],
         child: const HomePage(),
       );

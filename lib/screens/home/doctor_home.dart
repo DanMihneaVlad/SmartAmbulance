@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_ambulance/constants/sizes.dart';
+import 'package:smart_ambulance/providers/paramedic_destinations_provider.dart';
+import 'package:smart_ambulance/screens/doctor/doctor_map_screen.dart';
 import 'package:smart_ambulance/screens/paramedic/chat_widget.dart';
 import 'package:smart_ambulance/widgets/custom_appbar.dart';
 import 'package:smart_ambulance/widgets/custom_button.dart';
@@ -26,11 +29,26 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
 
               const SizedBox(height: SmartAmbulanceSizes.mediumSizedBox,),
 
-              
+              Row(
+                children: [
+                  SmartAmbulanceButton(text: AppLocalizations.of(context)!.paramedic_home_map_button, fontSize: SmartAmbulanceSizes.smallButtonFontSize, onPressed: (() async {
+                    await goToMapPage();
+                  }),)
+                ],
+              )
             ],
           ),
         )
       ),
     );
+  }
+
+  Future<void> goToMapPage() async {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => ChangeNotifierProvider.value(
+        value: context.read<ParamedicDestinationsProvider>(),
+        child: const DoctorMapScreen(),
+      )
+    ));
   }
 }

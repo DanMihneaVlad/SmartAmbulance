@@ -18,6 +18,7 @@ _$DestinationModelImpl _$$DestinationModelImplFromJson(
       lngCurrent: (json['lngCurrent'] as num).toDouble(),
       latDestination: (json['latDestination'] as num).toDouble(),
       lngDestination: (json['lngDestination'] as num).toDouble(),
+      paramedicName: json['paramedicName'] as String,
     );
 
 Map<String, dynamic> _$$DestinationModelImplToJson(
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$DestinationModelImplToJson(
       'lngCurrent': instance.lngCurrent,
       'latDestination': instance.latDestination,
       'lngDestination': instance.lngDestination,
+      'paramedicName': instance.paramedicName,
     };

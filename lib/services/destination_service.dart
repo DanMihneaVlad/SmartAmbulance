@@ -15,7 +15,7 @@ class DestinationService {
       final response = await _firestoreInstance.collection(CollectionPaths.destinations).where("userUid", isEqualTo: userId).get();
 
       if (response.docs.isEmpty) {
-        return DestinationModel(uid: '', userUid: userId, hospitalUid: '', latStart: 0, lngStart: 0, latCurrent: 0, lngCurrent: 0, latDestination: 0, lngDestination: 0);
+        return DestinationModel(uid: '', userUid: userId, hospitalUid: '', latStart: 0, lngStart: 0, latCurrent: 0, lngCurrent: 0, latDestination: 0, lngDestination: 0, paramedicName: '');
       }
 
       final Map<String, dynamic> destination = response.docs[0].data();
@@ -35,7 +35,7 @@ class DestinationService {
       final response = await _firestoreInstance.collection(CollectionPaths.destinations).where("userUid", isEqualTo: userId).get();
 
       if (response.docs.isEmpty) {
-        return DestinationModel(uid: '', userUid: userId, hospitalUid: '', latStart: 0, lngStart: 0, latCurrent: 0, lngCurrent: 0, latDestination: 0, lngDestination: 0);
+        return DestinationModel(uid: '', userUid: userId, hospitalUid: '', latStart: 0, lngStart: 0, latCurrent: 0, lngCurrent: 0, latDestination: 0, lngDestination: 0, paramedicName: '');
       }
 
       final Map<String, dynamic> destination = response.docs[0].data();
@@ -69,5 +69,25 @@ class DestinationService {
     } on Exception catch (e) {
       return e;
     }
+  }
+
+  Future getParamedicDestinations() async {
+    List<DestinationModel> paramedicDestinations = [];
+
+    var destinations = await _firestoreInstance.collection(CollectionPaths.destinations).get();
+    final data = destinations.docs.map((doc) => doc.data()).toList();
+
+    for (Map<String, dynamic>? elem in data) {
+      DestinationModel hospital = DestinationModel.fromJson(elem as Map<String, dynamic>);
+      paramedicDestinations.add(hospital);
+    }
+
+    return paramedicDestinations;
+  }
+
+  Stream<QuerySnapshot> getDestinationUpdates() {
+    return _firestoreInstance
+      .collection(CollectionPaths.destinations)
+      .snapshots();
   }
 }

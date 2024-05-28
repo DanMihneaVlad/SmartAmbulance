@@ -15,6 +15,7 @@ class DestinationModel with _$DestinationModel {
     required double lngCurrent,
     required double latDestination,
     required double lngDestination,
+    required String paramedicName,
   }) = _DestinationModel;
 
   factory DestinationModel.fromJson(Map<String, dynamic> json) => _$DestinationModelFromJson(json);

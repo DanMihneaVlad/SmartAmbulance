@@ -28,8 +28,7 @@ class _ParamedicMapScreenState extends State<ParamedicMapScreen> {
 
   final Completer<GoogleMapController> _mapController = Completer<GoogleMapController>();
 
-  static const LatLng _pGooglePlex = LatLng(45.7377, 21.2412);
-  static const LatLng _pAcasa = LatLng(45.7545, 21.2537);
+  static const LatLng _initialPos = LatLng(45.75337, 21.22804);
   LatLng? _currentPos = null;
 
   Map<PolylineId, Polyline> polylines = {};
@@ -59,7 +58,7 @@ class _ParamedicMapScreenState extends State<ParamedicMapScreen> {
         children: <Widget>[
           GoogleMap(
             onMapCreated: ((GoogleMapController controller) => _mapController.complete(controller)),
-            initialCameraPosition: CameraPosition(target: _pGooglePlex, zoom: 13),
+            initialCameraPosition: const CameraPosition(target: _initialPos, zoom: 13),
             markers: getMarkers(),
             polylines: Set<Polyline>.of(polylines.values),
           ),
@@ -162,6 +161,7 @@ class _ParamedicMapScreenState extends State<ParamedicMapScreen> {
   Future<void> getHospitalsAndDestination() async {
     await destinationProvider.getHospitals;
     await destinationProvider.getDestination;
+    await destinationProvider.getUserName;
     
     // check for hospital
     if (destinationProvider.userDestination.uid.isNotEmpty) {

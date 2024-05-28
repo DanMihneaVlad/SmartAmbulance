@@ -38,6 +38,8 @@ mixin _$DestinationModel {
   set latDestination(double value) => throw _privateConstructorUsedError;
   double get lngDestination => throw _privateConstructorUsedError;
   set lngDestination(double value) => throw _privateConstructorUsedError;
+  String get paramedicName => throw _privateConstructorUsedError;
+  set paramedicName(String value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +62,8 @@ abstract class $DestinationModelCopyWith<$Res> {
       double latCurrent,
       double lngCurrent,
       double latDestination,
-      double lngDestination});
+      double lngDestination,
+      String paramedicName});
 }
 
 /// @nodoc
@@ -85,6 +88,7 @@ class _$DestinationModelCopyWithImpl<$Res, $Val extends DestinationModel>
     Object? lngCurrent = null,
     Object? latDestination = null,
     Object? lngDestination = null,
+    Object? paramedicName = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -123,6 +127,10 @@ class _$DestinationModelCopyWithImpl<$Res, $Val extends DestinationModel>
           ? _value.lngDestination
           : lngDestination // ignore: cast_nullable_to_non_nullable
               as double,
+      paramedicName: null == paramedicName
+          ? _value.paramedicName
+          : paramedicName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -144,7 +152,8 @@ abstract class _$$DestinationModelImplCopyWith<$Res>
       double latCurrent,
       double lngCurrent,
       double latDestination,
-      double lngDestination});
+      double lngDestination,
+      String paramedicName});
 }
 
 /// @nodoc
@@ -167,6 +176,7 @@ class __$$DestinationModelImplCopyWithImpl<$Res>
     Object? lngCurrent = null,
     Object? latDestination = null,
     Object? lngDestination = null,
+    Object? paramedicName = null,
   }) {
     return _then(_$DestinationModelImpl(
       uid: null == uid
@@ -205,6 +215,10 @@ class __$$DestinationModelImplCopyWithImpl<$Res>
           ? _value.lngDestination
           : lngDestination // ignore: cast_nullable_to_non_nullable
               as double,
+      paramedicName: null == paramedicName
+          ? _value.paramedicName
+          : paramedicName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -221,7 +235,8 @@ class _$DestinationModelImpl implements _DestinationModel {
       required this.latCurrent,
       required this.lngCurrent,
       required this.latDestination,
-      required this.lngDestination});
+      required this.lngDestination,
+      required this.paramedicName});
 
   factory _$DestinationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DestinationModelImplFromJson(json);
@@ -244,10 +259,12 @@ class _$DestinationModelImpl implements _DestinationModel {
   double latDestination;
   @override
   double lngDestination;
+  @override
+  String paramedicName;
 
   @override
   String toString() {
-    return 'DestinationModel(uid: $uid, userUid: $userUid, hospitalUid: $hospitalUid, latStart: $latStart, lngStart: $lngStart, latCurrent: $latCurrent, lngCurrent: $lngCurrent, latDestination: $latDestination, lngDestination: $lngDestination)';
+    return 'DestinationModel(uid: $uid, userUid: $userUid, hospitalUid: $hospitalUid, latStart: $latStart, lngStart: $lngStart, latCurrent: $latCurrent, lngCurrent: $lngCurrent, latDestination: $latDestination, lngDestination: $lngDestination, paramedicName: $paramedicName)';
   }
 
   @JsonKey(ignore: true)
@@ -275,7 +292,8 @@ abstract class _DestinationModel implements DestinationModel {
       required double latCurrent,
       required double lngCurrent,
       required double latDestination,
-      required double lngDestination}) = _$DestinationModelImpl;
+      required double lngDestination,
+      required String paramedicName}) = _$DestinationModelImpl;
 
   factory _DestinationModel.fromJson(Map<String, dynamic> json) =
       _$DestinationModelImpl.fromJson;
@@ -307,6 +325,9 @@ abstract class _DestinationModel implements DestinationModel {
   @override
   double get lngDestination;
   set lngDestination(double value);
+  @override
+  String get paramedicName;
+  set paramedicName(String value);
   @override
   @JsonKey(ignore: true)
   _$$DestinationModelImplCopyWith<_$DestinationModelImpl> get copyWith =>
