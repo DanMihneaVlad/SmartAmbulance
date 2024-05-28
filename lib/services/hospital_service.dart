@@ -34,4 +34,16 @@ class HospitalService {
     }
 
   }
+
+  Future addHospital(name, address) async{
+     HospitalModel hospital = HospitalModel(uid: "123445", name: name, address: address , lat:0,lng: 0);
+     
+    try {
+      // Add the hospital to the hospitals collection in Firestore
+      await _firestoreInstance.collection(CollectionPaths.hospitals).add(hospital.toJson());
+      print('Hospital added successfully');
+    } catch (e) {
+      print('Error adding hospital: $e');
+    }
+  }
 }

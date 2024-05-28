@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_ambulance/services/hospital_service.dart';
 import 'package:smart_ambulance/widgets/custom_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smart_ambulance/widgets/custom_button.dart';
@@ -9,11 +10,13 @@ import 'package:smart_ambulance/constants/text_styles.dart';
 class AddHospital extends StatefulWidget {
   const AddHospital({super.key});
 
+
   @override
   State<AddHospital> createState() => _AddHospital();
 }
 
 class _AddHospital extends State<AddHospital> {
+  final HospitalService hospitalService = HospitalService();
   final _hospitalNameController = TextEditingController();
   final _hospitalAddressController = TextEditingController();
   @override
@@ -47,7 +50,7 @@ class _AddHospital extends State<AddHospital> {
                 ),
                 const SizedBox(height: SmartAmbulanceSizes.bigSizedBox),
           
-                // Email textfield
+                // Name field
                 TextField(
                   controller: _hospitalNameController,
                   keyboardType: TextInputType.text,
@@ -55,17 +58,22 @@ class _AddHospital extends State<AddHospital> {
                 ),
                 const SizedBox(height: SmartAmbulanceSizes.smallSizedBox),
 
-                // Password textfield
+                // Address field
                 TextField(
                   controller: _hospitalAddressController,
-                  obscureText: true,
+                  keyboardType: TextInputType.text,
                   decoration: SmartAmbulanceDecoration.inputDecoration(hintText: "Address")
                 ),
                 const SizedBox(height: SmartAmbulanceSizes.smallSizedBox),
           
                 SmartAmbulanceButton(text: "Add", fontSize: SmartAmbulanceSizes.bigButtonFontSize, onPressed: (() async {
-                
+                await addHospital(_hospitalNameController.text.trim(),_hospitalAddressController.text.trim());
                 }),),]))))
       );
   }
+    Future<void> addHospital(a,b) async {
+
+      hospitalService.addHospital(a,b);
+
+    }
 }
