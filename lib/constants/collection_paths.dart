@@ -5,4 +5,5 @@ class CollectionPaths {
   static String approvedUsers = 'approvedUsers';
   static String chatRooms = 'chatRooms';
   static String messages = 'messages';
+  static String patients = 'patients';
 }

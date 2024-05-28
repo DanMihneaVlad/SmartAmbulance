@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_ambulance/constants/sizes.dart';
 import 'package:smart_ambulance/providers/destination_provider.dart';
+import 'package:smart_ambulance/providers/patient_provider.dart';
+import 'package:smart_ambulance/screens/paramedic/add_patient_information_screen.dart';
 import 'package:smart_ambulance/screens/paramedic/chat_widget.dart';
 import 'package:smart_ambulance/screens/paramedic/paramedic_map_screen.dart';
 import 'package:smart_ambulance/widgets/custom_appbar.dart';
@@ -30,9 +32,13 @@ class _ParamedicHomePageState extends State<ParamedicHomePage> {
               const SizedBox(height: SmartAmbulanceSizes.mediumSizedBox,),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SmartAmbulanceButton(text: AppLocalizations.of(context)!.paramedic_home_map_button, fontSize: SmartAmbulanceSizes.smallButtonFontSize, onPressed: (() async {
                     await goToMapPage();
+                  }),),
+                  SmartAmbulanceButton(text: AppLocalizations.of(context)!.paramedic_home_add_patient, fontSize: SmartAmbulanceSizes.smallButtonFontSize, onPressed: (() async {
+                    await goToAddPatientInformationPage();
                   }),)
                 ],
               )
@@ -48,6 +54,15 @@ class _ParamedicHomePageState extends State<ParamedicHomePage> {
       builder: (_) => ChangeNotifierProvider.value(
         value: context.read<DestinationProvider>(),
         child: const ParamedicMapScreen(),
+      )
+    ));
+  }
+
+  Future<void> goToAddPatientInformationPage() async {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => ChangeNotifierProvider.value(
+        value: context.read<PatientProvider>(),
+        child: const AddPatientInformationScreen(),
       )
     ));
   }
