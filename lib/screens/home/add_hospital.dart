@@ -26,7 +26,7 @@ class _AddHospital extends State<AddHospital> {
     @override
   Widget build(BuildContext context) {
       return Scaffold(
-      appBar: CustomAppBar(title: "Add Hospital", backButton: false, signOutButton: true),
+      appBar: CustomAppBar(title: "Add Hospital", backButton: true, signOutButton: true),
      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: SmartAmbulanceSizes.horizontalPadding),

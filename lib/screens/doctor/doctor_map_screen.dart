@@ -33,7 +33,7 @@ class _DoctorMapScreenState extends State<DoctorMapScreen> {
 
   Map<PolylineId, Polyline> polylines = {};
 
-  final Set<Marker> markers = {};
+  Set<Marker> markers = {};
 
   static const List<double> markerColors = [
     BitmapDescriptor.hueAzure,
@@ -198,7 +198,11 @@ class _DoctorMapScreenState extends State<DoctorMapScreen> {
   }
 
   void updateLocations() async {
-    await paramedicDestinationsProvider.getDestinations;
+    markers = {};
+    polylines = {};
+    var oldDestination = paramedicDestinationsProvider.oldDestinations;
+
+    await paramedicDestinationsProvider.updateDestinationsFuture();
 
     for (var hospital in paramedicDestinationsProvider.hospitals) {
       markers.add(Marker(
@@ -216,6 +220,12 @@ class _DoctorMapScreenState extends State<DoctorMapScreen> {
       markers.add(Marker(markerId: const MarkerId("_currentLocation"), icon: BitmapDescriptor.defaultMarker, position: _currentPos!));
     }
 
+    List<String> markersIds = [];
+
+    for (var destination in paramedicDestinationsProvider.destinations) {
+      markersIds.add("Paramedic_${destination.userUid}");
+    }
+
     for (var i = 0; i < paramedicDestinationsProvider.destinations.length; i++) {
       DestinationModel destination = paramedicDestinationsProvider.destinations[i];
       Random random = Random();
@@ -224,18 +234,35 @@ class _DoctorMapScreenState extends State<DoctorMapScreen> {
       var randomHue = markerColors[randomNumber];
       MaterialColor color = polylineColors[randomNumber];
 
-      markers.add(
-        Marker(
-          markerId: MarkerId("Paramedic_${destination.userUid}"),
-          icon: BitmapDescriptor.defaultMarkerWithHue(randomHue),
-          position: LatLng(destination.latCurrent, destination.lngCurrent),
-          infoWindow: InfoWindow(
-            title: destination.paramedicName
-          )
+      var marker = Marker(
+        markerId: MarkerId("Paramedic_${destination.userUid}"),
+        icon: BitmapDescriptor.defaultMarkerWithHue(randomHue),
+        position: LatLng(destination.latCurrent, destination.lngCurrent),
+        infoWindow: InfoWindow(
+          title: destination.paramedicName
         )
       );
 
-      getPolylinePoints(destination).then((coordinates) => generatePolyLineFromPoints(coordinates, destination, color));
+      var stillTraveilling = markersIds.contains(marker.markerId.value);
+
+      if (stillTraveilling) {
+        markers.add(
+          marker
+        );
+
+        getPolylinePoints(destination).then((coordinates) => generatePolyLineFromPoints(coordinates, destination, color));
+      } else {
+        markers.removeWhere((element) => !markersIds.contains(element.markerId.value));
+      }
     }
+
+    /*
+    List<DestinationModel> removedDestinations = oldDestination.where((element) => !paramedicDestinationsProvider.destinations.contains(element)).toList();
+    List<String> removedPolylines = [];
+    for (var destination in removedDestinations) {
+      removedPolylines.add("poly${destination.uid}");
+    }
+    polylines.removeWhere((key, value) => removedPolylines.contains(key.value));
+    */
   }
 }

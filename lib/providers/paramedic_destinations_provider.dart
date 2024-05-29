@@ -11,6 +11,7 @@ class ParamedicDestinationsProvider extends ChangeNotifier {
   late Future getDestinations;
   late Future getHospitals;
   late List<DestinationModel> destinations = [];
+  late List<DestinationModel> oldDestinations = [];
   late List<HospitalModel> hospitals = [];
 
   ParamedicDestinationsProvider() {
@@ -25,6 +26,12 @@ class ParamedicDestinationsProvider extends ChangeNotifier {
   }
 
   Future getParamedicDestinationsFuture() async {
+    destinations = await destinationService.getParamedicDestinations();
+    oldDestinations = destinations;
+  }
+
+  Future updateDestinationsFuture() async {
+    oldDestinations = destinations;
     destinations = await destinationService.getParamedicDestinations();
   }
 

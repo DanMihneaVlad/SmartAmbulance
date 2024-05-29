@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_ambulance/constants/collection_paths.dart';
 import 'package:smart_ambulance/models/hospital/hospital_model.dart';
 import 'package:smart_ambulance/services/auth_service.dart';
+import 'package:uuid/uuid.dart';
 
 class HospitalService {
 
@@ -35,8 +36,9 @@ class HospitalService {
 
   }
 
-  Future addHospital(name, address) async{
-     HospitalModel hospital = HospitalModel(uid: "123445", name: name, address: address , lat:0,lng: 0);
+  Future addHospital(name, address) async {
+    String uid = Uuid().v1();
+    HospitalModel hospital = HospitalModel(uid: uid, name: name, address: address, lat: 0, lng: 0);
      
     try {
       // Add the hospital to the hospitals collection in Firestore
