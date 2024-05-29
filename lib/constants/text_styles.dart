@@ -20,6 +20,10 @@ class SmartAmbulanceTextStyles {
     color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18
   );
 
+  static const TextStyle cardTitleTextStyle = TextStyle(
+    fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black
+  );
+
   static const TextStyle userTileTextStyle = TextStyle(
     fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black
   );

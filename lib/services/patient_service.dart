@@ -40,4 +40,28 @@ class PatientService {
       return e;
     }
   }
+
+  Future getPatientsInformation() async {
+    try {
+
+      List<PatientModel> patients = [];
+
+      final response = await _firestoreInstance.collection(CollectionPaths.patients).get();
+      final data = response.docs.map((doc) => doc.data()).toList();
+
+      if (data.isEmpty) {
+        return patients;
+      }
+
+      for (Map<String, dynamic>? elem in data) {
+        PatientModel patient = PatientModel.fromJson(elem as Map<String, dynamic>);
+        patients.add(patient);
+      }
+
+      return patients;
+
+    } on Exception {
+      rethrow;
+    }
+  }
 }

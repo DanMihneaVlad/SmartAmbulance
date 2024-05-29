@@ -13,7 +13,9 @@ class PatientProvider extends ChangeNotifier {
   late UserService userService;
   late Future getHospitals;
   late Future getUserDetails;
+  late Future getPatientsInformation;
   late List<HospitalModel> hospitals = [];
+  late List<PatientModel> patients = [];
   late UserModel user;
 
   PatientProvider() {
@@ -22,6 +24,7 @@ class PatientProvider extends ChangeNotifier {
     userService = UserService();
     getHospitals = getHospitalsFuture();
     getUserDetails = getUserDetailsFuture();
+    getPatientsInformation = getPatientsInformationFuture();
   }
 
   Future getHospitalsFuture() async {
@@ -44,5 +47,13 @@ class PatientProvider extends ChangeNotifier {
 
   Future addPatientInformation(PatientModel patient) async {
     await patientService.addPatient(patient);
+  }
+
+  Future getPatientsInformationFuture() async {
+    try {
+      patients = await patientService.getPatientsInformation();
+    } on Exception catch (e) {
+      print('Error retrieving the patients');
+    }
   }
 }

@@ -54,6 +54,7 @@
     "chat_send_message": "Send",
     "chat_enter_message": "Enter a message",
     "doctor_home": "Doctor Home",
+    "doctor_home_patients_button": "See patients",
     "add_patient_information": "Add patient info",
     "add_patient_picture_camera": "Camera",
     "add_patient_picture_gallery": "Gallery",
@@ -68,5 +69,6 @@
     "add_patient_error_no_image": "Please add an image",
     "add_patient_error_hospital": "Please select an hospital",
     "add_patient_error": "Error while saving the information",
-    "add_patient_success": "Successfully added the information"
+    "add_patient_success": "Successfully added the information",
+    "patients_page": "Patients"
 }
