@@ -15,6 +15,7 @@ _$PatientModelImpl _$$PatientModelImplFromJson(Map<String, dynamic> json) =>
       imageUrl: json['imageUrl'] as String,
       paramedicName: json['paramedicName'] as String,
       destinationHospital: json['destinationHospital'] as String,
+      timestamp: const TimestampSerializer().fromJson(json['timestamp']),
     );
 
 Map<String, dynamic> _$$PatientModelImplToJson(_$PatientModelImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$PatientModelImplToJson(_$PatientModelImpl instance) =>
       'imageUrl': instance.imageUrl,
       'paramedicName': instance.paramedicName,
       'destinationHospital': instance.destinationHospital,
+      'timestamp': const TimestampSerializer().toJson(instance.timestamp),
     };

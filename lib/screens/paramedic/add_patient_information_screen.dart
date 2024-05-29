@@ -204,40 +204,40 @@ class _AddPatientInformationScreenState extends State<AddPatientInformationScree
       saveError = '';
     });
     if (_formKey.currentState!.validate()) {
-      if (_destinationHospital == null) {
-        if (_image == null) {
+      if (_image == null) {
+        setState(() {
+          saveError = AppLocalizations.of(context)!.add_patient_error_no_image;
+        });
+      } else {
+        try {
+          String patientId = const Uuid().v1();
+          final DateTime timestamp = DateTime.now();
+
+          dynamic imageUrl = await patientProvider.addImage(_patientNameController.text.trim(), _image);
+
+          PatientModel patient = PatientModel(
+            uid: patientId, 
+            name: _patientNameController.text.trim(), 
+            cnp: _cnpController.text.trim(), 
+            diagnostic: _diagnosticController.text.trim(), 
+            imageUrl: imageUrl, 
+            paramedicName: '${patientProvider.user.firstName} ${patientProvider.user.lastName}', 
+            destinationHospital: _destinationHospital!.name,
+            timestamp: timestamp
+          );
+
+          await patientProvider.addPatientInformation(patient);
+
+          showDialog(
+            context: context, 
+            builder: (BuildContext context) => CustomAlertDialog(title: AppLocalizations.of(context)!.add_patient_success)
+          );
+
+          clearControllers();
+        } catch (e) {
           setState(() {
-            saveError = AppLocalizations.of(context)!.add_patient_error_no_image;
+            saveError = AppLocalizations.of(context)!.add_patient_error;
           });
-        } else {
-          try {
-            String patientId = const Uuid().v1();
-
-            dynamic imageUrl = await patientProvider.addImage(_patientNameController.text.trim(), _image);
-
-            PatientModel patient = PatientModel(
-              uid: patientId, 
-              name: _patientNameController.text.trim(), 
-              cnp: _cnpController.text.trim(), 
-              diagnostic: _diagnosticController.text.trim(), 
-              imageUrl: imageUrl, 
-              paramedicName: '${patientProvider.user.firstName} ${patientProvider.user.lastName}', 
-              destinationHospital: _destinationHospital!.name
-            );
-
-            await patientProvider.addPatientInformation(patient);
-
-            showDialog(
-              context: context, 
-              builder: (BuildContext context) => CustomAlertDialog(title: AppLocalizations.of(context)!.add_patient_success)
-            );
-
-            clearControllers();
-          } catch (e) {
-            setState(() {
-              saveError = AppLocalizations.of(context)!.add_patient_error;
-            });
-          }
         }
       }
     }
@@ -249,6 +249,9 @@ class _AddPatientInformationScreenState extends State<AddPatientInformationScree
     _diagnosticController.clear();
     setState(() {
       _image = null;
+    });
+    setState(() {
+      _destinationHospital = null;
     });
   }
 }

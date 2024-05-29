@@ -43,6 +43,6 @@ class PatientProvider extends ChangeNotifier {
   }
 
   Future addPatientInformation(PatientModel patient) async {
-    
+    await patientService.addPatient(patient);
   }
 }

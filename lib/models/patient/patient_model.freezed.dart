@@ -27,6 +27,8 @@ mixin _$PatientModel {
   String get imageUrl => throw _privateConstructorUsedError;
   String get paramedicName => throw _privateConstructorUsedError;
   String get destinationHospital => throw _privateConstructorUsedError;
+  @TimestampSerializer()
+  DateTime get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $PatientModelCopyWith<$Res> {
       String diagnostic,
       String imageUrl,
       String paramedicName,
-      String destinationHospital});
+      String destinationHospital,
+      @TimestampSerializer() DateTime timestamp});
 }
 
 /// @nodoc
@@ -70,6 +73,7 @@ class _$PatientModelCopyWithImpl<$Res, $Val extends PatientModel>
     Object? imageUrl = null,
     Object? paramedicName = null,
     Object? destinationHospital = null,
+    Object? timestamp = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -100,6 +104,10 @@ class _$PatientModelCopyWithImpl<$Res, $Val extends PatientModel>
           ? _value.destinationHospital
           : destinationHospital // ignore: cast_nullable_to_non_nullable
               as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -119,7 +127,8 @@ abstract class _$$PatientModelImplCopyWith<$Res>
       String diagnostic,
       String imageUrl,
       String paramedicName,
-      String destinationHospital});
+      String destinationHospital,
+      @TimestampSerializer() DateTime timestamp});
 }
 
 /// @nodoc
@@ -140,6 +149,7 @@ class __$$PatientModelImplCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? paramedicName = null,
     Object? destinationHospital = null,
+    Object? timestamp = null,
   }) {
     return _then(_$PatientModelImpl(
       uid: null == uid
@@ -170,6 +180,10 @@ class __$$PatientModelImplCopyWithImpl<$Res>
           ? _value.destinationHospital
           : destinationHospital // ignore: cast_nullable_to_non_nullable
               as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -184,7 +198,8 @@ class _$PatientModelImpl implements _PatientModel {
       required this.diagnostic,
       required this.imageUrl,
       required this.paramedicName,
-      required this.destinationHospital});
+      required this.destinationHospital,
+      @TimestampSerializer() required this.timestamp});
 
   factory _$PatientModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PatientModelImplFromJson(json);
@@ -203,10 +218,13 @@ class _$PatientModelImpl implements _PatientModel {
   final String paramedicName;
   @override
   final String destinationHospital;
+  @override
+  @TimestampSerializer()
+  final DateTime timestamp;
 
   @override
   String toString() {
-    return 'PatientModel(uid: $uid, name: $name, cnp: $cnp, diagnostic: $diagnostic, imageUrl: $imageUrl, paramedicName: $paramedicName, destinationHospital: $destinationHospital)';
+    return 'PatientModel(uid: $uid, name: $name, cnp: $cnp, diagnostic: $diagnostic, imageUrl: $imageUrl, paramedicName: $paramedicName, destinationHospital: $destinationHospital, timestamp: $timestamp)';
   }
 
   @override
@@ -224,13 +242,15 @@ class _$PatientModelImpl implements _PatientModel {
             (identical(other.paramedicName, paramedicName) ||
                 other.paramedicName == paramedicName) &&
             (identical(other.destinationHospital, destinationHospital) ||
-                other.destinationHospital == destinationHospital));
+                other.destinationHospital == destinationHospital) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, uid, name, cnp, diagnostic,
-      imageUrl, paramedicName, destinationHospital);
+      imageUrl, paramedicName, destinationHospital, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -248,13 +268,15 @@ class _$PatientModelImpl implements _PatientModel {
 
 abstract class _PatientModel implements PatientModel {
   const factory _PatientModel(
-      {required final String uid,
-      required final String name,
-      required final String cnp,
-      required final String diagnostic,
-      required final String imageUrl,
-      required final String paramedicName,
-      required final String destinationHospital}) = _$PatientModelImpl;
+          {required final String uid,
+          required final String name,
+          required final String cnp,
+          required final String diagnostic,
+          required final String imageUrl,
+          required final String paramedicName,
+          required final String destinationHospital,
+          @TimestampSerializer() required final DateTime timestamp}) =
+      _$PatientModelImpl;
 
   factory _PatientModel.fromJson(Map<String, dynamic> json) =
       _$PatientModelImpl.fromJson;
@@ -273,6 +295,9 @@ abstract class _PatientModel implements PatientModel {
   String get paramedicName;
   @override
   String get destinationHospital;
+  @override
+  @TimestampSerializer()
+  DateTime get timestamp;
   @override
   @JsonKey(ignore: true)
   _$$PatientModelImplCopyWith<_$PatientModelImpl> get copyWith =>
